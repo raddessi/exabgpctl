@@ -194,7 +194,7 @@ def config_load():
         for ipaddr in item["run"]["ips"]:
             ips.update(_parse_ip(ipaddr))
         item["run"]["ips"] = ips
-        item["run"]["next_hop"] = _parse_ip(item["run"]["next_hop"])
+        item["run"]["next_hop"] = _parse_ip(item["run"]["next_hop"]) if item["run"]["next_hop"] else item["run"]["next_hop"]
         item["name"] = svc
         result["processes"].append(item)
     sys.argv = sys_argv
